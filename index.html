@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portafolio — Ingeniero de Software</title>
+    <meta name="description" content="Portafolio personal de un ingeniero de software. Proyectos, experiencia y contacto." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="#">
+      <span class="brand__logo" aria-hidden="true">
+        <!-- Pequeño logo inspirado en Python (doble bloque) -->
+        <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <linearGradient id="pyg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#01baef"/>
+              <stop offset="100%" stop-color="#20bf55"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#pyg)" d="M50 10h15a15 15 0 0 1 15 15v15H50a15 15 0 0 1-15-15V25A15 15 0 0 1 50 10z"/>
+          <circle cx="60" cy="20" r="4" fill="#ffeb00"/>
+          <path fill="#01baef" d="M50 90H35a15 15 0 0 1-15-15V60h30a15 15 0 0 1 15 15v5A15 15 0 0 1 50 90z"/>
+          <circle cx="40" cy="80" r="4" fill="#ffeb00"/>
+        </svg>
+      </span>
+        <span class="brand__text">Mario Adair Abarca de Jesús</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+        <button id="navToggle" class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
+            <span class="sr-only">Abrir menú</span>
+            ☰
+        </button>
+        <ul id="navMenu" class="nav__menu">
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><button id="themeToggle" class="btn btn--ghost" aria-pressed="false" title="Cambiar tema">Tema</button></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__content container">
+            <h1>Ingeniero de Software</h1>
+            <p class="lead">
+                Construyo productos robustos y escalables con foco en DX, performance y calidad.
+                Fan del diseño limpio y de escribir código claro, idiomático y bien probado.
+            </p>
+            <div class="cta">
+                <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
+                <a class="btn btn--secondary" href="#contacto">Contactar</a>
+                <a class="btn btn--ghost" href="#" download>Descargar CV</a>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal__title">
+                    <span class="dot dot--red"></span>
+                    <span class="dot dot--yellow"></span>
+                    <span class="dot dot--green"></span>
+                    <span class="terminal__label">python3 — REPL</span>
+                </div>
+                <pre class="terminal__body" aria-label="Ejemplo de código Python"><code class="python" id="typing">
+# Hola, soy Mario 👋
+class IngenieroSoftware:
+    def __init__(self, stack=("Python", "JavaScript")):
+        self.stack = stack
+        self.enfoque = ["Clean Code", "Pruebas", "DevOps"]
+
+    def construir(self, producto):
+        return f"Entregando {producto} con calidad y velocidad 🚀"
+
+yo = IngenieroSoftware()
+print(yo.construir("servicios backend"))
+</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="section container">
+        <h2>Sobre mí</h2>
+        <p>
+            Soy ingeniero de software con experiencia en backend y frontend. Me especializo en APIs,
+            arquitectura limpia y automatización. Me encanta Python por su elegancia y ecosistema,
+            y JavaScript por su ubicuidad en la web.
+        </p>
+        <ul class="badges">
+            <li class="badge">Python</li>
+            <li class="badge">FastAPI</li>
+            <li class="badge">Django</li>
+            <li class="badge">Node.js</li>
+            <li class="badge">TypeScript</li>
+            <li class="badge">React</li>
+            <li class="badge">Docker</li>
+            <li class="badge">CI/CD</li>
+        </ul>
+    </section>
+
+    <section id="proyectos" class="section container">
+        <h2>Proyectos destacados</h2>
+        <div class="grid">
+            <article class="card reveal">
+                <div class="card__tags">
+                    <span class="tag tag--py">Python</span>
+                    <span class="tag">FastAPI</span>
+                </div>
+                <h3>API de recomendaciones</h3>
+                <p>Servicio de recomendaciones basado en embeddings y colas de trabajo asíncronas.</p>
+                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Repositorio</a>
+            </article>
+
+            <article class="card reveal">
+                <div class="card__tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">React</span>
+                </div>
+                <h3>Panel analítico</h3>
+                <p>Dashboard en tiempo real con websockets y gráficos interactivos.</p>
+                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Demo</a>
+            </article>
+
+            <article class="card reveal">
+                <div class="card__tags">
+                    <span class="tag tag--py">Python</span>
+                    <span class="tag">ML</span>
+                </div>
+                <h3>Clasificador de texto</h3>
+                <p>Pipeline de NLP con entrenamiento reproducible y seguimiento de experimentos.</p>
+                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Artículo</a>
+            </article>
+        </div>
+    </section>
+
+    <section id="skills" class="section container">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <span>Python</span>
+                <div class="bar"><span style="width: 90%"></span></div>
+            </div>
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="bar"><span style="width: 85%"></span></div>
+            </div>
+            <div class="skill">
+                <span>Arquitectura</span>
+                <div class="bar"><span style="width: 80%"></span></div>
+            </div>
+            <div class="skill">
+                <span>DevOps</span>
+                <div class="bar"><span style="width: 70%"></span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="section container">
+        <h2>Experiencia</h2>
+        <ol class="timeline">
+            <li class="timeline__item reveal">
+                <div class="timeline__dot"></div>
+                <div class="timeline__content">
+                    <h3>Sr. Backend Engineer — Compañía X</h3>
+                    <span class="timeline__date">2023 — Presente</span>
+                    <p>Diseño de microservicios, métricas, observabilidad y escalado.</p>
+                </div>
+            </li>
+            <li class="timeline__item reveal">
+                <div class="timeline__dot"></div>
+                <div class="timeline__content">
+                    <h3>Full‑stack — Startup Y</h3>
+                    <span class="timeline__date">2021 — 2023</span>
+                    <p>Entrega de MVPs, integración con terceros y despliegues automatizados.</p>
+                </div>
+            </li>
+            <li class="timeline__item reveal">
+                <div class="timeline__dot"></div>
+                <div class="timeline__content">
+                    <h3>Data Engineer — Empresa Z</h3>
+                    <span class="timeline__date">2019 — 2021</span>
+                    <p>ETLs, orquestación y optimización de costos en la nube.</p>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <section id="contacto" class="section container">
+        <h2>Contacto</h2>
+        <form class="contact" onsubmit="return false;">
+            <div class="field">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="field">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto" required></textarea>
+            </div>
+            <button class="btn btn--primary" id="sendBtn">Enviar</button>
+            <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© <span id="year"></span> Tu Nombre — Hecho con HTML, CSS y JavaScript.</p>
+        <div class="socials">
+            <a href="#" aria-label="GitHub">GitHub</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" aria-label="Twitter/X">X</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
