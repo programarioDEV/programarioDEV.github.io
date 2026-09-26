@@ -1,229 +1,640 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portafolio — Ingeniero de Software</title>
-    <meta name="description" content="Portafolio personal de un ingeniero de software. Proyectos, experiencia y contacto." />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mario Abarca — Software Engineer</title>
+  <meta name="description" content="CV y portafolio técnico de Mario Abarca, Software Engineer: monitoreo en tiempo real para manufactura automotriz, arquitecturas orientadas a eventos, ingeniería de datos en Azure y desarrollo full-stack con Python y TypeScript.">
+  <meta name="author" content="Mario Abarca">
+  <link rel="canonical" href="https://programariodev.github.io/">
+
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a101c" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://programariodev.github.io/">
+  <meta property="og:title" content="Mario Abarca — Software Engineer">
+  <meta property="og:description" content="Monitoreo en tiempo real para manufactura automotriz, arquitecturas orientadas a eventos e ingeniería de datos. Experiencia, proyectos, stack y contacto.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Aplica el tema guardado antes del primer pintado (evita el parpadeo claro/oscuro). -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
+      } catch (e) { /* sin almacenamiento: se usa la preferencia del sistema */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="script.js"></script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mario Abarca",
+      "alternateName": "Mario Adair Abarca de Jesús",
+      "jobTitle": "Software Engineer",
+      "url": "https://programariodev.github.io/",
+      "email": "mailto:marioadair.aj12@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Querétaro", "addressCountry": "MX" },
+      "sameAs": ["https://github.com/programarioDEV", "https://www.linkedin.com/in/marioadair12/", "https://www.youtube.com/@programarioDEV"],
+      "worksFor": { "@type": "Organization", "name": "Magna" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Universidad Autónoma de Querétaro" },
+        { "@type": "CollegeOrUniversity", "name": "UNIR" }
+      ],
+      "knowsLanguage": ["es", "en", "fr"],
+      "knowsAbout": ["Python", "TypeScript", "React", "Node.js", "PostgreSQL", "Azure Data Factory", "Databricks", "Arquitectura orientada a eventos", "Ingeniería de datos"]
+    }
+  </script>
 </head>
 <body>
-<header class="site-header">
-    <a class="brand" href="#">
-      <span class="brand__logo" aria-hidden="true">
-        <!-- Pequeño logo inspirado en Python (doble bloque) -->
-        <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true">
-          <defs>
-            <linearGradient id="pyg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#01baef"/>
-              <stop offset="100%" stop-color="#20bf55"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#pyg)" d="M50 10h15a15 15 0 0 1 15 15v15H50a15 15 0 0 1-15-15V25A15 15 0 0 1 50 10z"/>
-          <circle cx="60" cy="20" r="4" fill="#ffeb00"/>
-          <path fill="#01baef" d="M50 90H35a15 15 0 0 1-15-15V60h30a15 15 0 0 1 15 15v5A15 15 0 0 1 50 90z"/>
-          <circle cx="40" cy="80" r="4" fill="#ffeb00"/>
-        </svg>
-      </span>
-        <span class="brand__text">Mario Adair Abarca de Jesús</span>
-    </a>
+  <!-- Sprite de iconos: se referencian con <use href="#i-…">. -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></g></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></g></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></g></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></g></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M7 19h10.5a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.1 5 5 0 0 0 7 19z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></g></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></g></symbol>
+  </svg>
 
-    <nav class="nav" aria-label="Principal">
-        <button id="navToggle" class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
-            <span class="sr-only">Abrir menú</span>
-            ☰
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#inicio" aria-label="Mario Abarca, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">MA</span>
+        <span class="brand__name">Mario Abarca</span>
+      </a>
+
+      <nav class="nav" aria-label="Secciones">
+        <ul id="nav-menu" class="nav__menu">
+          <li><a class="nav__link" href="#stack">Stack</a></li>
+          <li><a class="nav__link" href="#proyectos">Proyectos</a></li>
+          <li><a class="nav__link" href="#experiencia">Experiencia</a></li>
+          <li><a class="nav__link" href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema">
+          <svg class="icon icon--sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
         </button>
-        <ul id="navMenu" class="nav__menu">
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experiencia">Experiencia</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><button id="themeToggle" class="btn btn--ghost" aria-pressed="false" title="Cambiar tema">Tema</button></li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-    <section class="hero">
-        <div class="hero__bg" aria-hidden="true"></div>
-        <div class="hero__content container">
-            <h1>Ingeniero de Software</h1>
-            <p class="lead">
-                Construyo productos robustos y escalables con foco en DX, performance y calidad.
-                Fan del diseño limpio y de escribir código claro, idiomático y bien probado.
-            </p>
-            <div class="cta">
-                <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
-                <a class="btn btn--secondary" href="#contacto">Contactar</a>
-                <a class="btn btn--ghost" href="#" download>Descargar CV</a>
-            </div>
-
-            <div class="terminal">
-                <div class="terminal__title">
-                    <span class="dot dot--red"></span>
-                    <span class="dot dot--yellow"></span>
-                    <span class="dot dot--green"></span>
-                    <span class="terminal__label">python3 — REPL</span>
-                </div>
-                <pre class="terminal__body" aria-label="Ejemplo de código Python"><code class="python" id="typing">
-# Hola, soy Mario 👋
-class IngenieroSoftware:
-    def __init__(self, stack=("Python", "JavaScript")):
-        self.stack = stack
-        self.enfoque = ["Clean Code", "Pruebas", "DevOps"]
-
-    def construir(self, producto):
-        return f"Entregando {producto} con calidad y velocidad 🚀"
-
-yo = IngenieroSoftware()
-print(yo.construir("servicios backend"))
-</code></pre>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre-mi" class="section container">
-        <h2>Sobre mí</h2>
-        <p>
-            Soy ingeniero de software con experiencia en backend y frontend. Me especializo en APIs,
-            arquitectura limpia y automatización. Me encanta Python por su elegancia y ecosistema,
-            y JavaScript por su ubicuidad en la web.
-        </p>
-        <ul class="badges">
-            <li class="badge">Python</li>
-            <li class="badge">FastAPI</li>
-            <li class="badge">Django</li>
-            <li class="badge">Node.js</li>
-            <li class="badge">TypeScript</li>
-            <li class="badge">React</li>
-            <li class="badge">Docker</li>
-            <li class="badge">CI/CD</li>
-        </ul>
-    </section>
-
-    <section id="proyectos" class="section container">
-        <h2>Proyectos destacados</h2>
-        <div class="grid">
-            <article class="card reveal">
-                <div class="card__tags">
-                    <span class="tag tag--py">Python</span>
-                    <span class="tag">FastAPI</span>
-                </div>
-                <h3>API de recomendaciones</h3>
-                <p>Servicio de recomendaciones basado en embeddings y colas de trabajo asíncronas.</p>
-                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Repositorio</a>
-            </article>
-
-            <article class="card reveal">
-                <div class="card__tags">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">React</span>
-                </div>
-                <h3>Panel analítico</h3>
-                <p>Dashboard en tiempo real con websockets y gráficos interactivos.</p>
-                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Demo</a>
-            </article>
-
-            <article class="card reveal">
-                <div class="card__tags">
-                    <span class="tag tag--py">Python</span>
-                    <span class="tag">ML</span>
-                </div>
-                <h3>Clasificador de texto</h3>
-                <p>Pipeline de NLP con entrenamiento reproducible y seguimiento de experimentos.</p>
-                <a class="btn btn--link" href="#" target="_blank" rel="noopener">Artículo</a>
-            </article>
-        </div>
-    </section>
-
-    <section id="skills" class="section container">
-        <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill">
-                <span>Python</span>
-                <div class="bar"><span style="width: 90%"></span></div>
-            </div>
-            <div class="skill">
-                <span>JavaScript</span>
-                <div class="bar"><span style="width: 85%"></span></div>
-            </div>
-            <div class="skill">
-                <span>Arquitectura</span>
-                <div class="bar"><span style="width: 80%"></span></div>
-            </div>
-            <div class="skill">
-                <span>DevOps</span>
-                <div class="bar"><span style="width: 70%"></span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experiencia" class="section container">
-        <h2>Experiencia</h2>
-        <ol class="timeline">
-            <li class="timeline__item reveal">
-                <div class="timeline__dot"></div>
-                <div class="timeline__content">
-                    <h3>Sr. Backend Engineer — Compañía X</h3>
-                    <span class="timeline__date">2023 — Presente</span>
-                    <p>Diseño de microservicios, métricas, observabilidad y escalado.</p>
-                </div>
-            </li>
-            <li class="timeline__item reveal">
-                <div class="timeline__dot"></div>
-                <div class="timeline__content">
-                    <h3>Full‑stack — Startup Y</h3>
-                    <span class="timeline__date">2021 — 2023</span>
-                    <p>Entrega de MVPs, integración con terceros y despliegues automatizados.</p>
-                </div>
-            </li>
-            <li class="timeline__item reveal">
-                <div class="timeline__dot"></div>
-                <div class="timeline__content">
-                    <h3>Data Engineer — Empresa Z</h3>
-                    <span class="timeline__date">2019 — 2021</span>
-                    <p>ETLs, orquestación y optimización de costos en la nube.</p>
-                </div>
-            </li>
-        </ol>
-    </section>
-
-    <section id="contacto" class="section container">
-        <h2>Contacto</h2>
-        <form class="contact" onsubmit="return false;">
-            <div class="field">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
-            </div>
-            <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="tu@email.com" required />
-            </div>
-            <div class="field">
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto" required></textarea>
-            </div>
-            <button class="btn btn--primary" id="sendBtn">Enviar</button>
-            <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
-        </form>
-    </section>
-</main>
-
-<footer class="site-footer">
-    <div class="container">
-        <p>© <span id="year"></span> Tu Nombre — Hecho con HTML, CSS y JavaScript.</p>
-        <div class="socials">
-            <a href="#" aria-label="GitHub">GitHub</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="Twitter/X">X</a>
-        </div>
+        <button class="icon-btn nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="nav-menu" aria-label="Menú de secciones">
+          <svg class="icon icon--open" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="#i-close"/></svg>
+        </button>
+      </nav>
     </div>
-</footer>
+  </header>
 
-<script src="script.js"></script>
+  <main id="contenido" tabindex="-1">
+    <!-- ============================ PERFIL ============================ -->
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__intro">
+          <p class="eyebrow">Software Engineer · Querétaro, México</p>
+          <h1 id="hero-title">Mario Abarca</h1>
+          <p class="hero__role">Backend escalable, sistemas confiables y desarrollo full-stack</p>
+          <p class="hero__lead">
+            Ingeniero de software en manufactura automotriz: diseño sistemas de monitoreo en tiempo real,
+            arquitecturas orientadas a eventos y microservicios backend con trazabilidad IATF&nbsp;16949,
+            sobre una base sólida en ingeniería de datos (Azure, Databricks). Transformo reglas de negocio
+            complejas y analítica de datos en software de producción estructurado, mantenible y eficiente.
+          </p>
+
+          <!-- Contacto en texto plano: solo visible en la versión impresa / PDF. -->
+          <p class="print-only print-contact">
+            Querétaro, México · marioadair.aj12@gmail.com · linkedin.com/in/marioadair12 ·
+            github.com/programarioDEV · youtube.com/@programarioDEV · programariodev.github.io
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#proyectos">Ver proyectos</a>
+            <button class="btn btn--secondary" type="button" data-action="print" hidden>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>
+              Descargar CV (PDF)
+            </button>
+            <a class="btn btn--ghost" href="#contacto">Contactar</a>
+          </div>
+
+          <ul class="social" aria-label="Perfiles y contacto directo">
+            <li>
+              <a href="https://github.com/programarioDEV" rel="me noopener" target="_blank">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
+                GitHub<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/marioadair12/" rel="me noopener" target="_blank">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>
+                LinkedIn<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@programarioDEV" rel="me noopener" target="_blank">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-youtube"/></svg>
+                YouTube<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:marioadair.aj12@gmail.com">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>
+                marioadair.aj12@gmail.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Decorativo: resume en código lo que las secciones siguientes detallan. -->
+        <figure class="code-card" aria-hidden="true">
+          <div class="code-card__bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="code-card__file">profile.py</span>
+          </div>
+<pre><code><span class="tok-kw">class</span> <span class="tok-cls">MarioAbarca</span>(<span class="tok-cls">SoftwareEngineer</span>):
+    focus = (<span class="tok-str">"backend"</span>, <span class="tok-str">"datos"</span>, <span class="tok-str">"full-stack"</span>)
+    stack = (<span class="tok-str">"Python"</span>, <span class="tok-str">"PostgreSQL"</span>, <span class="tok-str">"Docker"</span>)
+
+    <span class="tok-kw">def</span> <span class="tok-fn">ship</span>(<span class="tok-self">self</span>, reglas):
+        app = <span class="tok-self">self</span>.<span class="tok-fn">clean_arch</span>(reglas)
+        <span class="tok-kw">assert</span> app.tests.passing
+        <span class="tok-kw">return</span> app.<span class="tok-fn">deploy</span>(ci=<span class="tok-bool">True</span>)</code></pre>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================ STACK ============================ -->
+    <section id="stack" class="section" aria-labelledby="stack-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">01 — Stack</p>
+          <h2 id="stack-title">Stack tecnológico</h2>
+          <p>Herramientas con las que diseño, construyo y opero software, agrupadas por capa.</p>
+        </header>
+
+        <div class="stack-grid">
+          <div class="stack-card">
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-server"/></svg>Backend &amp; Sistemas</h3>
+            <ul class="chips">
+              <li class="chip">Python</li>
+              <li class="chip">Node.js</li>
+              <li class="chip">Express</li>
+              <li class="chip">APIs RESTful</li>
+              <li class="chip">WebSockets</li>
+              <li class="chip">Microservicios</li>
+              <li class="chip">Arquitectura orientada a eventos</li>
+              <li class="chip">Java</li>
+              <li class="chip">C++</li>
+            </ul>
+          </div>
+          <div class="stack-card">
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layout"/></svg>Frontend &amp; UI</h3>
+            <ul class="chips">
+              <li class="chip">JavaScript (ES6+)</li>
+              <li class="chip">TypeScript</li>
+              <li class="chip">React</li>
+              <li class="chip">Next.js</li>
+              <li class="chip">HTML5 / CSS3</li>
+              <li class="chip">Canvas API</li>
+              <li class="chip">PySide6</li>
+              <li class="chip">Power BI</li>
+            </ul>
+          </div>
+          <div class="stack-card">
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-database"/></svg>Bases de datos &amp; Datos</h3>
+            <ul class="chips">
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Optimización SQL</li>
+              <li class="chip">Transacciones e aislamiento</li>
+              <li class="chip">Azure Data Factory</li>
+              <li class="chip">Azure Databricks</li>
+              <li class="chip">Spark</li>
+              <li class="chip">Kafka</li>
+              <li class="chip">Scala</li>
+              <li class="chip">Neon</li>
+            </ul>
+          </div>
+          <div class="stack-card">
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cloud"/></svg>Cloud, DevOps &amp; Calidad</h3>
+            <ul class="chips">
+              <li class="chip">Azure</li>
+              <li class="chip">Rocky Linux (on-premise)</li>
+              <li class="chip">Apache (reverse proxy)</li>
+              <li class="chip">PM2</li>
+              <li class="chip">Docker / Compose</li>
+              <li class="chip">GitHub Actions (CI/CD)</li>
+              <li class="chip">Pytest</li>
+              <li class="chip">Ruff</li>
+              <li class="chip">mypy</li>
+              <li class="chip">gitleaks</li>
+            </ul>
+          </div>
+          <div class="stack-card stack-card--wide">
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>IA &amp; ML <span class="status">En formación · Maestría UNIR</span></h3>
+            <ul class="chips">
+              <li class="chip">PyTorch</li>
+              <li class="chip">TensorFlow</li>
+              <li class="chip">Scikit-Learn</li>
+              <li class="chip">Pipelines RAG</li>
+              <li class="chip">Procesamiento inteligente de documentos</li>
+              <li class="chip">LangGraph</li>
+              <li class="chip">n8n</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="subhead">Prácticas de ingeniería</h3>
+        <ul class="practices">
+          <li class="practice">
+            <h4>Arquitectura limpia</h4>
+            <p>Separación explícita entre presentación, dominio y persistencia. La UI nunca toca la base de datos directamente.</p>
+          </li>
+          <li class="practice">
+            <h4>Rigor de código</h4>
+            <p>Cada push pasa por CI con linters, pruebas unitarias y escaneo automatizado de credenciales (gitleaks).</p>
+          </li>
+          <li class="practice">
+            <h4>Medir antes de afirmar</h4>
+            <p>Simulaciones deterministas por semilla, benchmarks reproducibles y latencias medidas contra un presupuesto.</p>
+          </li>
+          <li class="practice">
+            <h4>Commits semánticos</h4>
+            <p>Historial trazable bajo Conventional Commits: cada cambio explica qué cambió y por qué.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ PROYECTOS ============================ -->
+    <section id="proyectos" class="section" aria-labelledby="proyectos-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">02 — Proyectos</p>
+          <h2 id="proyectos-title">Proyectos destacados</h2>
+          <p>Cada proyecto resuelve un problema concreto con decisiones de arquitectura explícitas y resultados medibles.</p>
+        </header>
+
+        <div class="projects">
+          <!-- Proyecto 1 -->
+          <article class="project" aria-labelledby="p1-title">
+            <div class="project__main">
+              <p class="project__kind">App de escritorio · Backend &amp; datos</p>
+              <h3 id="p1-title" class="project__title">Control de Inventario — Mercado Libre</h3>
+              <p class="project__summary">Gestión operativa y financiera del inventario para vendedores de Mercado Libre, sobre PostgreSQL local (Docker) o en la nube (Neon).</p>
+              <dl class="details">
+                <div>
+                  <dt>Problema</dt>
+                  <dd>Un vendedor necesita saber qué tiene, qué se estanca y cuánto capital está inmovilizado, con un historial confiable y sin frenar la operación diaria para calcularlo.</dd>
+                </div>
+                <div>
+                  <dt>Arquitectura</dt>
+                  <dd>UI en PySide6 que solo habla con una capa de servicios. El stock únicamente cambia mediante movimientos inmutables (entradas, ventas, devoluciones y ajustes), lo que deja una auditoría completa por producto.</dd>
+                </div>
+                <div>
+                  <dt>Logros</dt>
+                  <dd>Analítica batch aislada en una transacción <code>REPEATABLE READ READ ONLY</code>: lotes paginados por llave, agregación en PostgreSQL con índices dedicados y una sola conexión con límite de tiempo por consulta.</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project__aside">
+              <ul class="metrics" aria-label="Resultados clave">
+                <li class="metric"><strong>4</strong><span>ejes de analítica: salud de stock, rotación, valuación y anomalías de catálogo</span></li>
+                <li class="metric"><strong>0</strong><span>escrituras posibles durante la analítica (transacción de solo lectura)</span></li>
+                <li class="metric"><strong>3</strong><span>checks de CI en cada push: Ruff, Pytest y gitleaks</span></li>
+              </ul>
+              <ul class="chips" aria-label="Stack del proyecto">
+                <li class="chip">Python 3.11+</li>
+                <li class="chip">PySide6</li>
+                <li class="chip">PostgreSQL</li>
+                <li class="chip">Docker</li>
+                <li class="chip">Neon</li>
+                <li class="chip">Pytest</li>
+                <li class="chip">Ruff</li>
+              </ul>
+              <p class="project__links">
+                <a class="btn btn--secondary btn--sm" href="https://github.com/programarioDEV/ControlInventario" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
+                  Código<span class="visually-hidden"> de Control de Inventario (se abre en una pestaña nueva)</span>
+                </a>
+              </p>
+              <p class="print-only project__url">github.com/programarioDEV/ControlInventario</p>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project" aria-labelledby="p2-title">
+            <div class="project__main">
+              <p class="project__kind">IA adversarial · Algoritmos</p>
+              <h3 id="p2-title" class="project__title">Asymmetric Snake AI</h3>
+              <p class="project__summary">Snake asimétrico en tiempo real donde un agente ofensivo gana por control territorial y estrangulamiento táctico, no por comer más.</p>
+              <dl class="details">
+                <div>
+                  <dt>Problema</dt>
+                  <dd>Las IAs clásicas de Snake solo persiguen comida. El reto: un agente que ataque —cortar rutas, sellar cuellos de botella— y que haga visible su razonamiento en cada tick.</dd>
+                </div>
+                <div>
+                  <dt>Arquitectura</dt>
+                  <dd>Núcleo puro e inmutable sin pygame, motor determinista por semilla y agentes intercambiables (Strategy). El agente combina BFS temporal, diagramas de Voronoi, A* ponderado y puntos de articulación (Tarjan) para elegir su modo táctico por utilidad.</dd>
+                </div>
+                <div>
+                  <dt>Logros</dt>
+                  <dd>Vence a un baseline greedy no trivial terminando más corto en promedio: gana por posición, no por tamaño. Overlays de depuración muestran en vivo la partición espacial, las rutas A*, los vectores de intercepción y los cuellos de botella.</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project__aside">
+              <ul class="metrics" aria-label="Resultados clave">
+                <li class="metric"><strong>65&nbsp;%</strong><span>de victorias contra un agente greedy (20 semillas)</span></li>
+                <li class="metric"><strong>3.2&nbsp;ms</strong><span>de latencia media por decisión: menos del 5&nbsp;% del presupuesto a 15&nbsp;ticks/s</span></li>
+                <li class="metric"><strong>117</strong><span>pruebas en verde con tipado <code>mypy --strict</code></span></li>
+              </ul>
+              <ul class="chips" aria-label="Stack del proyecto">
+                <li class="chip">Python 3.12</li>
+                <li class="chip">pygame-ce</li>
+                <li class="chip">A*</li>
+                <li class="chip">Voronoi</li>
+                <li class="chip">Tarjan</li>
+                <li class="chip">pytest</li>
+                <li class="chip">mypy</li>
+              </ul>
+              <p class="project__links">
+                <a class="btn btn--secondary btn--sm" href="https://github.com/programarioDEV/snake-game" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
+                  Código<span class="visually-hidden"> de Asymmetric Snake AI (se abre en una pestaña nueva)</span>
+                </a>
+              </p>
+              <p class="print-only project__url">github.com/programarioDEV/snake-game</p>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project" aria-labelledby="p3-title">
+            <div class="project__main">
+              <p class="project__kind">Web app · Frontend experimental</p>
+              <h3 id="p3-title" class="project__title">The Darwinian Calculator</h3>
+              <p class="project__summary">Calculadora cuya interfaz evoluciona según los patrones de uso de cada persona mediante computación evolutiva.</p>
+              <dl class="details">
+                <div>
+                  <dt>Problema</dt>
+                  <dd>Las interfaces son estáticas aunque cada persona las usa distinto. ¿Puede una UI reorganizarse sola a partir del uso real, sin backend ni librerías?</dd>
+                </div>
+                <div>
+                  <dt>Arquitectura</dt>
+                  <dd>Algoritmo genético en el cliente: cada botón es un cromosoma con genes de posición, escala y prominencia. Módulos ES separados para motor evolutivo, UI, almacenamiento y orquestación.</dd>
+                </div>
+                <div>
+                  <dt>Logros</dt>
+                  <dd>La interfaz se adapta a la frecuencia de clics y al tiempo de reacción de cada usuario, y conserva su evolución entre sesiones: el ADN de la UI persiste en <code>localStorage</code>. Respeta <code>prefers-reduced-motion</code>.</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project__aside">
+              <ul class="metrics" aria-label="Resultados clave">
+                <li class="metric"><strong>0</strong><span>dependencias: JavaScript vanilla</span></li>
+                <li class="metric"><strong>70/30</strong><span>peso de aptitud: frecuencia de clics / tiempo de reacción</span></li>
+                <li class="metric"><strong>5</strong><span>interacciones por ciclo de mutación, con resolución de colisiones</span></li>
+              </ul>
+              <ul class="chips" aria-label="Stack del proyecto">
+                <li class="chip">JavaScript (ES Modules)</li>
+                <li class="chip">HTML5</li>
+                <li class="chip">Canvas API</li>
+                <li class="chip">CSS Glassmorphism</li>
+                <li class="chip">Vercel</li>
+              </ul>
+              <p class="project__links">
+                <a class="btn btn--primary btn--sm" href="https://the-darwinian-calc.vercel.app" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external"/></svg>
+                  Demo<span class="visually-hidden"> de The Darwinian Calculator (se abre en una pestaña nueva)</span>
+                </a>
+                <a class="btn btn--secondary btn--sm" href="https://github.com/programarioDEV/TheDarwinianCalc" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
+                  Código<span class="visually-hidden"> de The Darwinian Calculator (se abre en una pestaña nueva)</span>
+                </a>
+              </p>
+              <p class="print-only project__url">github.com/programarioDEV/TheDarwinianCalc · the-darwinian-calc.vercel.app</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="projects__more">
+          <a href="https://github.com/programarioDEV?tab=repositories" target="_blank" rel="noopener">Ver todos los repositorios en GitHub<span class="visually-hidden"> (se abre en una pestaña nueva)</span> <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ EXPERIENCIA Y FORMACIÓN ============================ -->
+    <section id="experiencia" class="section" aria-labelledby="experiencia-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">03 — Trayectoria</p>
+          <h2 id="experiencia-title">Experiencia y formación</h2>
+          <p>De herramientas internas de automatización a pipelines de datos empresariales y sistemas de monitoreo en tiempo real para plantas de manufactura.</p>
+        </header>
+
+        <div class="cv-grid">
+          <div class="cv-col">
+            <h3 class="subhead subhead--icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase"/></svg>Experiencia</h3>
+            <ol class="timeline">
+              <li class="entry">
+                <h4 class="entry__title">Software Engineer <span class="entry__org">· Magna</span></h4>
+                <p class="entry__meta"><time datetime="2024-03">Mar 2024</time> – Presente</p>
+                <ul class="entry__bullets">
+                  <li>Diseñé e implementé un dashboard tipo <strong>Digital Twin</strong> (React, TypeScript, DataGrid optimizado) para monitorear en tiempo real <strong>80 líneas de producción</strong> concurrentes, con renderizado fluido y sin degradación de la UI bajo cargas de datos intensivas.</li>
+                  <li>Arquitecté un backend de enrutamiento inteligente orientado a eventos (microservicios en Python + WebSockets) que automatiza la escalación de alertas operativas a los equipos de ingeniería, reduciendo <strong>hasta un 70&nbsp;% el tiempo de respuesta a incidentes</strong> (medido en los registros de resolución).</li>
+                  <li>Administré de forma autónoma la infraestructura on-premise sobre Rocky Linux, con Apache como reverse proxy seguro y PM2 para clustering de procesos, logrando alta disponibilidad y operación continua en planta.</li>
+                  <li>Integré pipelines de streaming en tiempo real con bases de datos locales para alinear los eventos de piso de planta con la analítica operativa de largo plazo, habilitando monitoreo predictivo y análisis de tendencias históricas.</li>
+                </ul>
+                <ul class="chips entry__tags" aria-label="Tecnologías en Magna">
+                  <li class="chip">React</li>
+                  <li class="chip">TypeScript</li>
+                  <li class="chip">Python</li>
+                  <li class="chip">WebSockets</li>
+                  <li class="chip">Rocky Linux</li>
+                  <li class="chip">Apache</li>
+                  <li class="chip">PM2</li>
+                </ul>
+              </li>
+              <li class="entry">
+                <h4 class="entry__title">Data Engineer <span class="entry__org">· PPG</span></h4>
+                <p class="entry__meta"><time datetime="2022">2022</time> – <time datetime="2024">2024</time></p>
+                <ul class="entry__bullets">
+                  <li>Arquitecté y desplegué pipelines de datos a escala empresarial (Azure Data Factory, Databricks, Python) para la ingesta, procesamiento y validación de conjuntos de datos regulatorios y transaccionales de alto volumen, con verificaciones automatizadas de calidad.</li>
+                  <li>Desarrollé y ajusté modelos predictivos y notebooks analíticos (Scikit-Learn, PyTorch, Scala, SQL), alineando las reglas algorítmicas con estándares operativos y de cumplimiento regulatorio estricto.</li>
+                  <li>Construí dashboards interactivos en Power BI que transforman información cruda y no estructurada del data lake en reportes operativos ejecutivos.</li>
+                </ul>
+                <ul class="chips entry__tags" aria-label="Tecnologías en PPG">
+                  <li class="chip">Azure Data Factory</li>
+                  <li class="chip">Databricks</li>
+                  <li class="chip">Python</li>
+                  <li class="chip">Scala</li>
+                  <li class="chip">SQL</li>
+                  <li class="chip">Power BI</li>
+                </ul>
+              </li>
+              <li class="entry">
+                <h4 class="entry__title">Visual Basic Developer <span class="entry__org">· Brose</span></h4>
+                <p class="entry__meta"><time datetime="2020">2020</time> – <time datetime="2022">2022</time></p>
+                <ul class="entry__bullets">
+                  <li>Refactoricé y mantuve aplicaciones de escritorio y herramientas internas de automatización en Visual Basic, mejorando la velocidad de procesamiento de transacciones y la eficiencia del flujo de trabajo de los usuarios.</li>
+                  <li>Aseguré la integridad de datos y optimicé el rendimiento de consultas al integrar los backends de las aplicaciones con bases de datos relacionales seguras.</li>
+                </ul>
+                <ul class="chips entry__tags" aria-label="Tecnologías en Brose">
+                  <li class="chip">Visual Basic</li>
+                  <li class="chip">SQL</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <div class="cv-col">
+            <h3 class="subhead subhead--icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg>Formación</h3>
+            <ol class="timeline">
+              <li class="entry">
+                <h4 class="entry__title">Maestría en Inteligencia Artificial <span class="entry__org">· UNIR</span></h4>
+                <p class="entry__meta"><time datetime="2025-11">Nov 2025</time> – Presente <span class="status">En curso</span></p>
+              </li>
+              <li class="entry">
+                <h4 class="entry__title">Diplomado en Gestión de Proyectos <span class="entry__org">· UTEL</span></h4>
+                <p class="entry__meta"><time datetime="2025-06">Jun 2025</time> – <time datetime="2025-12">Dic 2025</time></p>
+              </li>
+              <li class="entry">
+                <h4 class="entry__title">Ingeniería en Software <span class="entry__org">· Universidad Autónoma de Querétaro</span></h4>
+                <p class="entry__meta"><time datetime="2019">2019</time> – <time datetime="2023">2023</time> · Licenciatura</p>
+              </li>
+              <li class="entry">
+                <h4 class="entry__title">Técnico en Programación <span class="entry__org">· CECyTEG</span></h4>
+                <p class="entry__meta"><time datetime="2016">2016</time> – <time datetime="2019">2019</time> · Nivel técnico</p>
+              </li>
+            </ol>
+
+            <h3 class="subhead subhead--icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Idiomas</h3>
+            <ul class="languages">
+              <li><strong>Español</strong><span>Nativo</span></li>
+              <li><strong>Inglés</strong><span>Profesional</span></li>
+              <li><strong>Francés</strong><span>Conversacional</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACTO ============================ -->
+    <section id="contacto" class="section" aria-labelledby="contacto-title">
+      <div class="container contact">
+        <div class="contact__intro">
+          <header class="section__head">
+            <p class="eyebrow">04 — Contacto</p>
+            <h2 id="contacto-title">Conectemos</h2>
+            <p>¿Tienes un rol, un proyecto o un reto técnico en mente? Escríbeme por el medio que prefieras.</p>
+          </header>
+
+          <address class="channels">
+            <ul>
+              <li class="channel">
+                <a href="mailto:marioadair.aj12@gmail.com">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
+                  marioadair.aj12@gmail.com
+                </a>
+                <button class="btn btn--ghost btn--sm" type="button" data-copy="marioadair.aj12@gmail.com" hidden>
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+                  <span data-copy-label>Copiar</span>
+                </button>
+              </li>
+              <li class="channel">
+                <a href="https://www.linkedin.com/in/marioadair12/" target="_blank" rel="me noopener">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-linkedin"/></svg></span>
+                  linkedin.com/in/marioadair12<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+                </a>
+              </li>
+              <li class="channel">
+                <a href="https://github.com/programarioDEV" target="_blank" rel="me noopener">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-github"/></svg></span>
+                  github.com/programarioDEV<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+                </a>
+              </li>
+              <li class="channel">
+                <a href="https://www.youtube.com/@programarioDEV" target="_blank" rel="me noopener">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-youtube"/></svg></span>
+                  youtube.com/@programarioDEV<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+                </a>
+              </li>
+            </ul>
+          </address>
+          <p class="visually-hidden" role="status" data-copy-status></p>
+        </div>
+
+        <!--
+          Sin JS el formulario abre el cliente de correo (mailto). Con JS se valida y se compone el correo.
+          Para enviar sin cliente de correo, pon en data-endpoint la URL de un servicio de formularios
+          (p. ej. https://formspree.io/f/xxxxxx): el script hará POST ahí en lugar de usar mailto.
+        -->
+        <form id="contact-form" class="form" action="mailto:marioadair.aj12@gmail.com" method="post" enctype="text/plain"
+              data-recipient="marioadair.aj12@gmail.com" data-endpoint="">
+          <div class="form__row">
+            <div class="field">
+              <label for="cf-name">Nombre</label>
+              <input id="cf-name" name="nombre" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="cf-name-error">
+              <p class="field__error" id="cf-name-error"></p>
+            </div>
+            <div class="field">
+              <label for="cf-email">Correo electrónico</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120" aria-describedby="cf-email-error">
+              <p class="field__error" id="cf-email-error"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Mensaje</label>
+            <textarea id="cf-message" name="mensaje" rows="6" required minlength="10" maxlength="1500" aria-describedby="cf-message-hint cf-message-error"></textarea>
+            <p class="field__hint" id="cf-message-hint">Entre 10 y 1500 caracteres.</p>
+            <p class="field__error" id="cf-message-error"></p>
+          </div>
+          <!-- Trampa anti-spam: invisible para personas, los bots suelen llenarla. -->
+          <div class="honeypot" aria-hidden="true">
+            <label for="cf-company">No llenar este campo</label>
+            <input id="cf-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form__footer">
+            <button class="btn btn--primary" type="submit">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>
+              Enviar mensaje
+            </button>
+            <p class="form__note" data-mailto-note>Se abrirá tu app de correo con el mensaje listo para enviar.</p>
+          </div>
+          <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span data-year>2026</span> Mario Abarca · HTML, CSS y JavaScript vanilla, sin frameworks.</p>
+      <p class="site-footer__links">
+        <a href="https://github.com/programarioDEV/programarioDEV.github.io" target="_blank" rel="noopener">Código fuente<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+        <a href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
