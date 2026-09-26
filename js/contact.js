@@ -1,28 +1,24 @@
 // Formulario de contacto sin backend propio.
 // - Sin data-endpoint: valida y abre el cliente de correo con un mailto: ya redactado.
 // - Con data-endpoint (Formspree, Getform, etc.): envía por POST y muestra el resultado.
+// Los mensajes salen de i18n.js, en el idioma de la página.
 
-const MESSAGES = {
-  valueMissing: 'Este campo es obligatorio.',
-  typeMismatch: 'Escribe un correo válido, por ejemplo nombre@dominio.com.',
-  tooShort: (field) => `Escribe al menos ${field.minLength} caracteres.`,
-  tooLong: (field) => `Usa como máximo ${field.maxLength} caracteres.`,
-};
+import { t } from './i18n.js';
 
 function errorFor(field) {
   const { validity } = field;
   if (validity.valid) return '';
-  if (validity.valueMissing) return MESSAGES.valueMissing;
-  if (validity.typeMismatch) return MESSAGES.typeMismatch;
-  if (validity.tooLong) return MESSAGES.tooLong(field);
-  if (validity.tooShort) return MESSAGES.tooShort(field);
+  if (validity.valueMissing) return t.valueMissing;
+  if (validity.typeMismatch) return t.typeMismatch;
+  if (validity.tooLong) return t.tooLong(field.maxLength);
+  if (validity.tooShort) return t.tooShort(field.minLength);
   return field.validationMessage;
 }
 
 // validity.tooShort solo se activa tras edición del usuario y no ignora espacios; lo comprobamos a mano.
 function checkLength(field) {
   const length = field.value.trim().length;
-  if (field.minLength > 0 && length > 0 && length < field.minLength) return MESSAGES.tooShort(field);
+  if (field.minLength > 0 && length > 0 && length < field.minLength) return t.tooShort(field.minLength);
   return '';
 }
 
@@ -50,9 +46,9 @@ function setStatus(status, state, message) {
   status.textContent = message;
 }
 
-function buildMailto(recipient, { nombre, email, mensaje }) {
-  const subject = `Contacto desde el portafolio — ${nombre}`;
-  const body = `${mensaje}\n\n—\n${nombre}\n${email}`;
+function buildMailto(recipient, { name, email, message }) {
+  const subject = t.mailSubject(name);
+  const body = `${message}\n\n—\n${name}\n${email}`;
   return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
@@ -74,7 +70,7 @@ export function initContactForm(form) {
   const submit = form.querySelector('[type="submit"]');
   const fields = [...form.querySelectorAll('input[required], textarea[required]')];
 
-  form.noValidate = true; // mensajes propios, accesibles y en español
+  form.noValidate = true; // mensajes propios, accesibles y en el idioma de la página
   if (endpoint) form.querySelector('[data-mailto-note]')?.setAttribute('hidden', '');
 
   // Limpia el error de un campo en cuanto vuelve a ser válido.
@@ -97,11 +93,7 @@ export function initContactForm(form) {
 
     if (!endpoint) {
       window.location.href = buildMailto(recipient, data);
-      setStatus(
-        status,
-        'success',
-        `Abrí tu app de correo con el mensaje listo. Si no se abrió, escríbeme directamente a ${recipient}.`,
-      );
+      setStatus(status, 'success', t.mailOpened(recipient));
       return;
     }
 
@@ -110,9 +102,9 @@ export function initContactForm(form) {
     try {
       await postToEndpoint(endpoint, form);
       form.reset();
-      setStatus(status, 'success', '¡Gracias! Tu mensaje llegó y te responderé pronto.');
+      setStatus(status, 'success', t.sent);
     } catch {
-      setStatus(status, 'error', `No se pudo enviar el mensaje. Escríbeme directamente a ${recipient}.`);
+      setStatus(status, 'error', t.sendFailed(recipient));
     } finally {
       submit.disabled = false;
       form.removeAttribute('aria-busy');
@@ -133,10 +125,10 @@ export function initCopyButtons(buttons, liveRegion) {
     button.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(button.dataset.copy);
-        label.textContent = '¡Copiado!';
-        if (liveRegion) liveRegion.textContent = 'Correo copiado al portapapeles.';
+        label.textContent = t.copied;
+        if (liveRegion) liveRegion.textContent = t.copiedAnnouncement;
       } catch {
-        label.textContent = 'No se pudo copiar';
+        label.textContent = t.copyFailed;
       }
       clearTimeout(timer);
       timer = setTimeout(() => {

@@ -1,6 +1,8 @@
 // Tema claro/oscuro. El <head> aplica el tema guardado antes del primer pintado;
 // este módulo solo gestiona el botón y persiste la elección del usuario.
 
+import { t } from './i18n.js';
+
 const STORAGE_KEY = 'theme';
 const root = document.documentElement;
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -28,7 +30,7 @@ export function currentTheme() {
 function syncButton(button) {
   const theme = currentTheme();
   button.dataset.current = theme;
-  button.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+  button.setAttribute('aria-label', theme === 'dark' ? t.themeToLight : t.themeToDark);
 }
 
 export function initTheme(button) {

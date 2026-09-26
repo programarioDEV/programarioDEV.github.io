@@ -399,7 +399,49 @@ main:focus {
 .nav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.site-header__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Selector de idioma EN | ES (enlaces a / y /es/). */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  list-style: none;
+}
+
+.lang-switch a {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  height: calc(2.5rem - 6px);
+  padding-inline: 0.45rem;
+  border-radius: calc(var(--radius-sm) - 2px);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.lang-switch a:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.lang-switch a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .nav__menu {
@@ -1196,6 +1238,14 @@ main:focus {
 
   .site-header__inner {
     flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* Pantallas muy angostas: solo el monograma, para que quepan idioma, tema y menú. */
+@media (max-width: 22.4rem) {
+  .brand__name {
+    display: none;
   }
 }
 
@@ -1295,7 +1345,7 @@ main:focus {
   .subhead--icon .icon,
   .entry::before,
   .entry::after,
-  #contacto,
+  .section--contact,
   .site-footer {
     display: none !important;
   }
@@ -1696,7 +1746,7 @@ main:focus {
     order: -2;
   }
 
-  #experiencia {
+  .section--career {
     order: -1;
     margin-top: 3mm;
   }
